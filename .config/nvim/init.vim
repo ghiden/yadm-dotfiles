@@ -3,12 +3,11 @@ let &packpath = &runtimepath
 
 set clipboard=unnamed
 
-lua require('plugins')
-
 if exists('g:vscode')
   echo "in vscode"
 else
   echo "ordinary neovim"
+  lua require('lspconfig')
 endif
 
 function! Cond(Cond, ...)
@@ -46,6 +45,9 @@ Plug 'tidalcycles/vim-tidal'
 
 " for neovim
 Plug 'numToStr/Comment.nvim'
+
+" lsp config
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
