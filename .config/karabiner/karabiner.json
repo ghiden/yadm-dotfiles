@@ -53,7 +53,8 @@
                         "product_id": 28705,
                         "vendor_id": 1256
                     },
-                    "ignore": false
+                    "ignore": false,
+                    "ignore_vendor_events": true
                 }
             ],
             "name": "Default profile",
