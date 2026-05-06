@@ -1,6 +1,6 @@
 -- Duplicate Browser Tab
--- Bind CMD + OPT + CTRL + "=" to duplicate the current browser tab
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "=", function()
+-- Bind CMD + OPT + "=" to duplicate the current browser tab
+hs.hotkey.bind({"cmd", "alt"}, "=", function()
   local app = hs.application.frontmostApplication()
   local appName = app:name()
   local duplicated = false
@@ -33,8 +33,8 @@ end)
 -- Initialize the speech synthesizer
 local talker = hs.speech.new()
 
--- Play / Pause / Resume hotkey (Cmd + Option + Ctrl + S)
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "s", function()
+-- Play / Pause / Resume hotkey (Cmd + Option + S)
+hs.hotkey.bind({"cmd", "alt"}, "s", function()
   -- 1. If it is currently paused, resume speaking
   if talker:isPaused() then
     talker:continue()
@@ -71,8 +71,8 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "s", function()
   end)
 end)
 
--- Stop and Reset hotkey (Cmd + Option + Ctrl + Q)
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "q", function()
+-- Stop and Reset hotkey (Cmd + Option + Q)
+hs.hotkey.bind({"cmd", "alt"}, "q", function()
   if talker:isSpeaking() or talker:isPaused() then
     talker:stop()
     hs.alert.show("Speech Stopped & Reset")
