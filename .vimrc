@@ -53,9 +53,6 @@ set nobackup
 " leave unsaved buffer
 set hidden
 
-" set title
-set title
-
 " highlight cursor line
 if v:version >= 700
   set cursorline
@@ -101,9 +98,6 @@ if has("autocmd")
 
   " automatically reload .vimrc after saving .vimrc when you change a lot
   " au BufWritePost .vimrc source $MYVIMRC
-
-  " Update tmux title
-  au BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window " . expand("%"))
 endif
 
 let mapleader = ","

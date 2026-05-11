@@ -86,7 +86,7 @@ if !exists('g:vscode')
 endif
 
 " Update tmux title
-au BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window " . expand("%"))
+" au BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window " . expand("%"))
 
 " status line
 set showcmd
