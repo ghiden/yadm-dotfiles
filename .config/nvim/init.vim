@@ -8,6 +8,7 @@ if exists('g:vscode')
 else
   echo "ordinary neovim"
   lua require('lspconfig')
+  lua require('utils')
 endif
 
 function! Cond(Cond, ...)
