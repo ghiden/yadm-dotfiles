@@ -86,9 +86,6 @@ if !exists('g:vscode')
  :set colorcolumn=80,100,120
 endif
 
-" Update tmux title
-" au BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window " . expand("%"))
-
 " status line
 set showcmd
 set laststatus=2
