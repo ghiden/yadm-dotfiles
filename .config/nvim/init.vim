@@ -24,25 +24,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
 
-" very simple file explorer, press "-" to start
-Plug 'tpope/vim-vinegar'
-
 " fzf
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
-" language support
-Plug 'leafgarland/typescript-vim'
-Plug 'vim-ruby/vim-ruby'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 " TidalCycles
 Plug 'tidalcycles/vim-tidal'
-
-" only when you need lisp
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-" Plug 'guns/vim-sexp'
-" Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 " for neovim
 Plug 'numToStr/Comment.nvim'
@@ -62,17 +49,13 @@ let maplocalleader = "@"
 " default indentation: 2 spaces
 set ts=2 sts=2 sw=2 expandtab
 
-" esc alternatives
-" CTRL-J CTRL-J
-inoremap jj <Esc>
-
 " search
 set incsearch
 set ignorecase			" ignore case
 set smartcase			" if start with cap, search cap
 
-" hit esc twice to unhighlight
-noremap <Esc><Esc> :nohlsearch<CR>
+" remove highlight CTRL-L
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
 " cursor line
 set cursorline
@@ -97,3 +80,6 @@ nnoremap <silent> <Leader><C-p> :Files<CR>
 nnoremap <silent> <C-p> :GFiles<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 
+" Custom command
+" - Reload vimrc
+command! -bang Reload source $MYVIMRC

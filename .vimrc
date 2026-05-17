@@ -6,25 +6,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
 
-" very simple file explorer, press "-" to start
-Plug 'tpope/vim-vinegar'
-
 " fzf
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
-" language support
-Plug 'leafgarland/typescript-vim'
-Plug 'vim-ruby/vim-ruby'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 " TidalCycles
 Plug 'tidalcycles/vim-tidal'
-
-" only when you need lisp
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-" Plug 'guns/vim-sexp'
-" Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 call plug#end()
 
@@ -44,8 +31,9 @@ set incsearch
 set ignorecase			" ignore case
 set smartcase			" if start with cap, search cap
 set hlsearch			" highlight result
-" hit esc twice to unhighlight
-noremap <Esc><Esc> :nohlsearch<CR>
+
+" remove highlight CTRL-L
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
 " backup: none
 set nobackup
@@ -95,9 +83,6 @@ set fileformats=unix,mac,dos
 if has("autocmd") 
   " enable file type detection
   filetype on
-
-  " automatically reload .vimrc after saving .vimrc when you change a lot
-  " au BufWritePost .vimrc source $MYVIMRC
 endif
 
 let mapleader = ","
@@ -108,9 +93,6 @@ set pastetoggle=<F2>
 " Custom command
 " - Reload vimrc
 command! -bang Reload source $MYVIMRC
-
-" Experimenting Ctrl-J twice for ESC
-inoremap jj <Esc>
 
 " highlight the 80th, 100th, 120th columns
 :set colorcolumn=80,100,120
