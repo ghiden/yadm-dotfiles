@@ -1,0 +1,14 @@
+[note]
+
+# Language used when writing notes.
+# This is used to generate slugs or with date formats.
+language = "en"
+
+# Template used to generate a note's filename, without extension.
+filename = "{{title}}"
+
+[tool]
+
+# Default editor used to open notes. When not set, the EDITOR or VISUAL
+# environment variables are used.
+editor = "nvim"
