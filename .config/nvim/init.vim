@@ -11,11 +11,6 @@ else
   lua require('utils')
 endif
 
-function! Cond(Cond, ...)
-  let opts = get(a:000, 0, {})
-  return a:Cond ? opts : extend(opts, { 'on': [], 'for': [] })
-endfunction
-
 call plug#begin()
 
 Plug 'tpope/vim-unimpaired'
@@ -31,15 +26,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " TidalCycles
 Plug 'tidalcycles/vim-tidal'
 
-" for neovim
-Plug 'numToStr/Comment.nvim'
-
 " lsp config
 Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
-
-lua require('Comment').setup()
 
 let mapleader = ","
 
