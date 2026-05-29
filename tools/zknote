@@ -1,0 +1,56 @@
+#!/usr/bin/env zsh
+
+# Usage: zknote [notebook-path]
+# Loops `zk edit -i` until you exit without selecting a note.
+
+case "$1" in
+  -h|--help)
+    echo "Usage: zknote [notebook-path]"
+    echo "  Loops zk edit -i until you exit without selecting a note."
+    exit 0
+    ;;
+esac
+
+# Check required dependencies
+for cmd in zk nvim; do
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "zknote: required command not found: $cmd" >&2
+    exit 127
+  fi
+done
+
+notebook="${1:-}"
+
+if [ -n "$notebook" ]; then
+  if [ ! -d "$notebook" ]; then
+    echo "zknote: not a directory: $notebook" >&2
+    exit 1
+  fi
+  cd "$notebook" || exit 1
+fi
+
+# set terminal title to current directory name
+print -Pn "\e]2;%1~\a"
+
+while true; do
+  flag=$(mktemp)
+  wrapper=$(mktemp)
+
+  cat <<-EOF > "$wrapper"
+#!/bin/sh
+echo 1 > "$flag"
+exec nvim "\$@"
+EOF
+  chmod +x "$wrapper"
+
+  ZK_EDITOR="$wrapper" zk edit -i --sort modified-
+
+  was_launched=$(cat "$flag")
+  rm -f "$flag" "$wrapper"
+
+  if [ -z "$was_launched" ]; then
+    break
+  fi
+
+  clear
+done
