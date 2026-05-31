@@ -11,15 +11,6 @@ vim.g.maplocalleader = "@" -- tidal
 
 vim.opt.clipboard = "unnamed"
 
--- VSCode Neovim Extension Checks
-if vim.g.vscode then
-  print("in vscode")
-else
-  print("ordinary neovim")
-  require('lspconfig')
-  require('utils')
-end
-
 -- ==========================================================================
 -- Plugins (Using vim-plug via vim.cmd)
 -- ==========================================================================
@@ -44,8 +35,22 @@ vim.cmd([[
   " lsp config
   Plug 'neovim/nvim-lspconfig'
 
+  " gitsigns
+  Plug 'lewis6991/gitsigns.nvim'
+
   call plug#end()
 ]])
+
+
+-- VSCode Neovim Extension Checks
+if vim.g.vscode then
+  print("in vscode")
+else
+  print("ordinary neovim")
+  require('lspconfig')
+  require('gitsigns').setup({ current_line_blame = true })
+  require('utils')
+end
 
 -- ==========================================================================
 -- Editor Options

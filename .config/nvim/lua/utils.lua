@@ -30,7 +30,7 @@ local function sum_last_word_in_selection(opts)
 
   -- Write to the '*' register (which your 'unnamed' setting is syncing with)
   pcall(vim.fn.setreg, '*', formatted_total)
-  
+
   -- Write to the default Neovim register as a backup
   pcall(vim.fn.setreg, '"', formatted_total)
   -- API args: (buffer, start_idx, end_idx, strict_indexing, replacement_lines_array)
@@ -43,3 +43,4 @@ vim.api.nvim_create_user_command('CalcSum', sum_last_word_in_selection, { range 
 -- When you press `:`, Neovim automatically inserts `'<,'>` for the visual range.
 -- The resulting command `:'<,'>CalcSum` passes the correct line1 and line2 to opts.
 vim.keymap.set('v', '<leader>cs', ':CalcSum<CR>', { silent = true, desc = "Sum last word of rows" })
+
