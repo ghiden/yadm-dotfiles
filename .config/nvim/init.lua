@@ -68,6 +68,10 @@ if not vim.g.vscode then
   vim.opt.colorcolumn = "80,100,120"
 end
 
+-- Use the same symbols as TextMate for tabstops and EOLs
+vim.opt.listchars = "tab:▸\\ ,eol:¬"
+vim.opt.list = true
+
 -- Status Line
 vim.opt.showcmd = true
 vim.opt.laststatus = 2
