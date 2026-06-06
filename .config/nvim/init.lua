@@ -98,3 +98,21 @@ vim.keymap.set('n', '<Leader>f', ':Rg<CR>', { silent = true })
 -- Custom command: Reload vimrc
 vim.api.nvim_create_user_command('Reload', 'source $MYVIMRC', { bang = true })
 
+vim.api.nvim_create_user_command(
+  'Marked',
+  function()
+    -- Grab the absolute path of the current buffer
+    local current_file = vim.fn.expand('%:p')
+
+    -- Make sure there is actually a file to open
+    if current_file == "" then
+      vim.notify("No file to open!", vim.log.levels.WARN)
+      return
+    end
+
+    -- Execute the shell command silently
+    vim.fn.system({ 'open', '-a', 'Marked 2', current_file })
+  end,
+  { desc = 'Silently open current file in Marked 2' }
+)
+

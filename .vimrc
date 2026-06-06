@@ -94,6 +94,9 @@ set pastetoggle=<F2>
 " - Reload vimrc
 command! -bang Reload source $MYVIMRC
 
+" - Preview Markdown file using "Marked 2"
+command! Marked call system('open -a "Marked 2" ' . shellescape(expand('%')))
+
 " highlight the 80th, 100th, 120th columns
 :set colorcolumn=80,100,120
 
