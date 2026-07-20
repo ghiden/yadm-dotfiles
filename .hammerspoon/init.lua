@@ -10,7 +10,7 @@ hs.hotkey.bind({"cmd", "alt"}, "=", function()
     duplicated = app:selectMenuItem({"Window", "Duplicate Tab"})
   elseif appName == "Google Chrome" or appName == "Brave Browser" then
     -- Chrome and Brave keep this under the "Tab" menu
-    duplicated = app:selectMenuItem({"Tab", "Duplicate tab"})
+    duplicated = app:selectMenuItem({"Tab", "Duplicate Tab"})
   elseif appName == "Firefox" then
     -- Firefox lacks a top menu bar item for duplicating tabs, so we simulate keystrokes
     hs.eventtap.keyStroke({"cmd"}, "l")
